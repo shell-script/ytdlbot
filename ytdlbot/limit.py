@@ -207,6 +207,10 @@ class VIP(Redis, MySQL):
             text += "{} ==> [{}]({})\n".format(*item)
         return text
 
+    def del_cache(self, user_link: "str"):
+        unique = self.extract_canonical_link(user_link)
+        return self.del_send_cache(unique)
+
 
 class BuyMeACoffee:
     def __init__(self):
